@@ -1,2 +1,2 @@
-# vaporspace
-Vapoware inspired space-shooter
+# Vaporspace
+Vaporwave inspired space-shooter
