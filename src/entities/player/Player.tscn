@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/entities/player/sprites/player_ship_red_03.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/player/sprites/player_ship_red_01.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://src/entities/player/sprites/exhaust_flame_04.png" type="Texture" id=8]
 [ext_resource path="res://src/entities/player/sprites/exhaust_flame_05.png" type="Texture" id=9]
 [ext_resource path="res://src/entities/player/sprites/exhaust_flame_06.png" type="Texture" id=10]
-
+[ext_resource path="res://src/entities/systems/weapons_system/WeaponsSystem.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -55,3 +55,5 @@ animation = "idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 0, -34, 20, -4, 20, 4, 29, 11, 25.5, 20.5, 10.5, 30, 3, 24, -3, 24, -10.5, 30, -25.5, 20.5, -29, 11, -20, 4, -20, -4 )
+
+[node name="WeaponsSystem" parent="." instance=ExtResource( 11 )]

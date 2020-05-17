@@ -5,6 +5,7 @@ export var speed := 400
 
 onready var animated_sprite := $BodySprite
 onready var bounding_box := get_viewport_rect().size
+onready var weapons_system = get_node("WeaponsSystem")
 
 
 func _process_animation(velocity: Vector2):
@@ -23,6 +24,11 @@ func _process_movement(delta: float, velocity: Vector2):
 	# Clamp position
 	position.x = clamp(position.x, 0, bounding_box.x)
 	position.y = clamp(position.y, 0, bounding_box.y)
+
+
+func _process_shooting():
+	if Input.is_action_pressed("ui_select"):
+		weapons_system.shoot_laser_beam()
 
 
 func _process_velocity() -> Vector2:
@@ -45,3 +51,4 @@ func _process(delta: float):
 	var velocity = _process_velocity()
 	_process_movement(delta, velocity)
 	_process_animation(velocity)
+	_process_shooting()

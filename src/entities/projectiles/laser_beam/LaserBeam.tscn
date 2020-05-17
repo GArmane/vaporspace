@@ -14,10 +14,13 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 4.23267
-height = 17.4636
+radius = 4.26525
+height = 17.5916
 
-[node name="LaserBeam" type="Area2D"]
+[node name="LaserBeam" type="KinematicBody2D"]
+z_index = -1
+collision_layer = 0
+collision_mask = 0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
@@ -25,7 +28,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
