@@ -12,3 +12,7 @@ laser_beam = ExtResource( 2 )
 laser_speed = 500
 
 [node name="Muzzle" type="Position2D" parent="."]
+
+[node name="LaserReady" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
