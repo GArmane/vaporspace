@@ -3,7 +3,7 @@
 [ext_resource path="res://src/entities/projectiles/laser_beam/sprites/laser_beam_green_1.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/projectiles/laser_beam/sprites/laser_beam_green_2.png" type="Texture" id=2]
 [ext_resource path="res://src/entities/projectiles/laser_beam/sprites/laser_beam_green_3.png" type="Texture" id=3]
-[ext_resource path="res://src/entities/projectiles/laser_beam/LaseBeam.gd" type="Script" id=4]
+[ext_resource path="res://src/entities/projectiles/laser_beam/LaserBeam.gd" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -18,7 +18,6 @@ radius = 4.23267
 height = 17.4636
 
 [node name="LaserBeam" type="Area2D"]
-position = Vector2( 384, 320 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
