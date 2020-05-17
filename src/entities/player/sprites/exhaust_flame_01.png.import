@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/exhaust_flame_06.png-711b971dd422c743312ecefd571d0b75.stex"
+path="res://.import/exhaust_flame_01.png-35cf708ac4abacc56706ce5b1a111272.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/agents/player/sprites/exhaust_flame_06.png"
-dest_files=[ "res://.import/exhaust_flame_06.png-711b971dd422c743312ecefd571d0b75.stex" ]
+source_file="res://src/entities/player/sprites/exhaust_flame_01.png"
+dest_files=[ "res://.import/exhaust_flame_01.png-35cf708ac4abacc56706ce5b1a111272.stex" ]
 
 [params]
 
