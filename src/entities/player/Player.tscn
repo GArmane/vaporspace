@@ -10,7 +10,7 @@
 [ext_resource path="res://src/entities/player/sprites/exhaust_flame_04.png" type="Texture" id=8]
 [ext_resource path="res://src/entities/player/sprites/exhaust_flame_05.png" type="Texture" id=9]
 [ext_resource path="res://src/entities/player/sprites/exhaust_flame_06.png" type="Texture" id=10]
-[ext_resource path="res://src/entities/systems/weapons_system/WeaponsSystem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/entities/controllers/weapons_system/WeaponsSystem.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -41,14 +41,12 @@ script = ExtResource( 4 )
 position = Vector2( -3.6494, 24.3871 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-frame = 2
 playing = true
 
 [node name="RightExhaustSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2.55506, 24.705 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-frame = 2
 playing = true
 
 [node name="BodySprite" type="AnimatedSprite" parent="."]

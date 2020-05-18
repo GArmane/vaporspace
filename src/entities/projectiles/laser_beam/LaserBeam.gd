@@ -16,7 +16,6 @@ func calc_velocity(delta) -> Vector2:
 	return Vector2(0, -speed) * delta
 
 
-
 func _ready():
 	animated_sprite.play()
 
