@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/entities/obstacles/asteroids/sprites/asteroid_01.png" type="Texture" id=1]
+[ext_resource path="res://src/entities/obstacles/asteroids/Asteroid.gd" type="Script" id=2]
+
+[node name="Asteroid" type="KinematicBody2D"]
+position = Vector2( 384, 320 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
