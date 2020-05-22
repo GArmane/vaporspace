@@ -7,7 +7,6 @@
 radius = 19.5
 
 [node name="Asteroid" type="KinematicBody2D"]
-position = Vector2( 381.68, 320.073 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
