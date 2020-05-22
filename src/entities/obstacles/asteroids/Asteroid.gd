@@ -1,10 +1,7 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 
-onready var collision_shape := $CollisionShape2D
-onready var rng := RandomNumberGenerator.new()
-onready var sprite := $Sprite
-onready var sprites = [
+const sprites = [
 	{
 		"texture": preload("res://src/entities/obstacles/asteroids/sprites/asteroid_01.png"),
 		"collision": {
@@ -35,22 +32,13 @@ onready var sprites = [
 	},
 ]
 
-export var speed := 0
-export var velocity := Vector2(0, 0)
 
-
-func switch_textures(index: int):
+func switch_model(index: int):
 	# Set texture
 	var new_sprite = sprites[index]
-	sprite.set_texture(new_sprite["texture"])
+	$Sprite.set_texture(new_sprite["texture"])
 
 	# Set collision shape
 	var coll = new_sprite["collision"]
-	collision_shape.position = coll["position"]
-	var shape = collision_shape.get_shape()
-	shape.set_radius(coll["radius"])
-
-
-func _ready():
-	rng.randomize()
-	switch_textures(rng.randi_range(0, 3))
+	$CollisionShape2D.position = coll["position"]
+	$CollisionShape2D.get_shape().set_radius(coll["radius"])
