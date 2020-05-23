@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/asteroid_02.png-6fb93c1da26656a9c655ef791721192e.stex"
+path="res://.import/asteroid_medium_01.png-a85cd51f9b2f286ecbdcf19ff32a2f35.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/entities/obstacles/asteroid/sprites/asteroid_02.png"
-dest_files=[ "res://.import/asteroid_02.png-6fb93c1da26656a9c655ef791721192e.stex" ]
+source_file="res://src/entities/obstacles/asteroids/sprites/asteroid_medium_01.png"
+dest_files=[ "res://.import/asteroid_medium_01.png-a85cd51f9b2f286ecbdcf19ff32a2f35.stex" ]
 
 [params]
 
