@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Vaporspace"
 config/description="Vaporwave inspired space-shooter game"
+run/main_scene="res://src/scenes/tests/Gameplay01.tscn"
 config/icon="res://icon.png"
 
 [display]

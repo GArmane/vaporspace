@@ -1,4 +1,4 @@
-extends Node2D
+extends Position2D
 
 
 const asteroids = [
@@ -7,6 +7,7 @@ const asteroids = [
 	preload("res://src/entities/obstacles/asteroids/AsteroidMedium01.tscn"),
 	preload("res://src/entities/obstacles/asteroids/AsteroidSmall01.tscn"),
 ]
+
 
 onready var container: Node2D = $Container
 onready var rng := RandomNumberGenerator.new()
@@ -35,6 +36,11 @@ func _ready():
 	rng.randomize()
 
 
+func _choose_random_asteroid() -> RigidBody2D:
+	var index = rng.randi_range(0, len(asteroids) - 1)
+	return asteroids[index].instance()
+
+
 func _rand_vector(start: Vector2, end: Vector2) -> Vector2:
 	return Vector2(rand_range(start.x, end.x), rand_range(start.y, end.y))
 
@@ -51,9 +57,8 @@ func _set_physics(asteroid: RigidBody2D) -> RigidBody2D:
 
 
 func spawn():
-	var index = rng.randi_range(0, 3)
-	var asteroid: RigidBody2D = _set_physics(asteroids[index].instance())
-	container.add_child(asteroid)
+	var asteroid = _set_physics(_choose_random_asteroid())
+	get_parent().add_child_below_node(self, asteroid)
 
 
 func _on_StartTimer_timeout():

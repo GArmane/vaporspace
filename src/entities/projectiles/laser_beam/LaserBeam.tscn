@@ -20,7 +20,7 @@ height = 17.5916
 [node name="LaserBeam" type="KinematicBody2D"]
 z_index = -1
 collision_layer = 0
-collision_mask = 0
+collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
