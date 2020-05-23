@@ -3,9 +3,9 @@ extends Area2D
 
 export var speed := 400
 
-onready var animated_sprite := $BodySprite
+onready var animated_sprite: AnimatedSprite = $BodySprite
 onready var bounding_box := get_viewport_rect().size
-onready var weapons_system = get_node("WeaponsSystem")
+onready var weapons_system: Node2D = $WeaponsSystem
 
 
 func _process_animation(velocity: Vector2):

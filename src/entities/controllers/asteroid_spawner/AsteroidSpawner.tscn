@@ -7,5 +7,19 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+position_end = Vector2( 600, 0 )
+linear_velocity_start = Vector2( 0, 10 )
+linear_velocity_end = Vector2( 10, 100 )
+angular_velocity_start = -5
+angular_velocity_end = 5
 
 [node name="Container" type="Node2D" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

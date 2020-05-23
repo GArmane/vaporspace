@@ -3,28 +3,28 @@ extends RigidBody2D
 
 const sprites = [
 	{
-		"texture": preload("res://src/entities/obstacles/asteroids/sprites/asteroid_01.png"),
+		"texture": preload("res://src/entities/obstacles/asteroid/sprites/asteroid_01.png"),
 		"collision": {
 			"position": Vector2(0, 0),
 			"radius": 19.5,
 		},
 	},
 	{
-		"texture": preload("res://src/entities/obstacles/asteroids/sprites/asteroid_02.png"),
+		"texture": preload("res://src/entities/obstacles/asteroid/sprites/asteroid_02.png"),
 		"collision": {
 			"position": Vector2(-2, 4),
 			"radius": 11.5
 		},
 	},
 	{
-		"texture": preload("res://src/entities/obstacles/asteroids/sprites/asteroid_03.png"),
+		"texture": preload("res://src/entities/obstacles/asteroid/sprites/asteroid_03.png"),
 		"collision": {
 			"position": Vector2(-1, 2),
 			"radius": 17.5,
 		},
 	},
 	{
-		"texture": preload("res://src/entities/obstacles/asteroids/sprites/asteroid_04.png"),
+		"texture": preload("res://src/entities/obstacles/asteroid/sprites/asteroid_04.png"),
 		"collision": {
 			"position": Vector2(0, 2),
 			"radius": 21.5,
