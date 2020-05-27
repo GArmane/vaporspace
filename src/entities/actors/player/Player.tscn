@@ -33,22 +33,23 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, 0.0626717 )
+collision_mask = 6
 script = ExtResource( 4 )
 
 [node name="LeftExhaustSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -3.6494, 24.3871 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="RightExhaustSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2.55506, 24.705 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="BodySprite" type="AnimatedSprite" parent="."]

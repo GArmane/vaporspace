@@ -14,13 +14,13 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 4.26525
-height = 17.5916
+radius = 3.80133
+height = 18.9833
 
-[node name="LaserBeam" type="KinematicBody2D"]
+[node name="LaserBeam" type="Area2D"]
 z_index = -1
 collision_layer = 0
-collision_mask = 2
+collision_mask = 4
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -28,3 +28,5 @@ frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+one_way_collision_margin = 0.0
+[connection signal="body_entered" from="." to="." method="_on_LaserBeam_body_entered"]

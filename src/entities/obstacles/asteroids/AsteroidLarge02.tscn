@@ -1,17 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/entities/obstacles/asteroids/sprites/asteroid_large_02.png" type="Texture" id=1]
+[ext_resource path="res://src/entities/obstacles/asteroids/scripts/AsteroidBase.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 31.6489
 
 [node name="Asteroid" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 3
+collision_layer = 4
+collision_mask = 5
 mass = 10.0
 gravity_scale = 0.0
 linear_damp = 0.0
 angular_damp = 0.0
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
