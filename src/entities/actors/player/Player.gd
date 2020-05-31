@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 
+signal dead
+
+
 export var speed := 400
 
 onready var animated_sprite: AnimatedSprite = $BodySprite
@@ -70,4 +73,5 @@ func _process_velocity() -> Vector2:
 
 # Public API
 func kill():
+	emit_signal("dead")
 	queue_free()
