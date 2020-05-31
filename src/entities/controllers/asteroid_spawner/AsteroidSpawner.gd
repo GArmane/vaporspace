@@ -1,6 +1,10 @@
 extends Position2D
 
 
+signal wave_start
+signal wave_end
+
+
 const asteroids = [
 	preload("res://src/entities/obstacles/asteroids/AsteroidLarge01.tscn"),
 	preload("res://src/entities/obstacles/asteroids/AsteroidLarge02.tscn"),
@@ -61,13 +65,16 @@ func spawn():
 	get_parent().add_child_below_node(self, asteroid)
 
 
-func _on_StartTimer_timeout():
+func spawn_wave(spawn_interval: float, count: int):
+	spawn_timer.wait_time = spawn_interval
+	emit_signal("wave_start")
+
 	spawn_timer.start()
-	for _count in range(0, wave_count):
+	for _count in range(0, count):
 		yield(spawn_timer, "timeout")
 
 	spawn_timer.stop()
-	start_timer.start()
+	emit_signal("wave_end")
 
 
 func _on_SpawnTimer_timeout():
