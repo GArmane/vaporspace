@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/entities/controllers/asteroid_spawner/AsteroidSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/entities/actors/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/tests/Gameplay01/GameController.gd" type="Script" id=3]
+[ext_resource path="res://src/scenes/tests/Gameplay01/sprites/background.png" type="Texture" id=4]
 
 [sub_resource type="SegmentShape2D" id=1]
 b = Vector2( 800, 0 )
@@ -36,6 +37,14 @@ shape = SubResource( 3 )
 
 [node name="LowerBoundary" type="CollisionShape2D" parent="Boundaries"]
 shape = SubResource( 4 )
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Image" type="Sprite" parent="Background"]
+position = Vector2( 400, 300 )
+scale = Vector2( 2.29226, 1.5 )
+texture = ExtResource( 4 )
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 3.0
