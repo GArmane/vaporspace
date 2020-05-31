@@ -8,7 +8,7 @@ onready var weapons_system: Node2D = $WeaponsSystem
 
 
 # Callbacks
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_process_shooting()
 
 
@@ -59,6 +59,11 @@ func _process_velocity() -> Vector2:
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
+	# Vertical movement
+	if Input.is_action_pressed("ui_up"):
+		velocity.y -= 1
+	if Input.is_action_pressed("ui_down"):
+		velocity.y += 1
 	# Normalize vector
 	return velocity.normalized() * speed
 
