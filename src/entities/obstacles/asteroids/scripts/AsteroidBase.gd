@@ -1,12 +1,15 @@
 extends RigidBody2D
 
 
-signal destroyed
+signal destroyed(points)
+
+
+export var points := 10
 
 
 # Public API
 func destroy():
-	emit_signal("destroyed")
+	emit_signal("destroyed", points)
 	queue_free()
 
 
