@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/entities/controllers/asteroid_spawner/AsteroidSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/entities/actors/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/tests/Gameplay01/GameController.gd" type="Script" id=3]
 [ext_resource path="res://src/scenes/tests/Gameplay01/sprites/background.png" type="Texture" id=4]
 [ext_resource path="res://src/scenes/tests/Gameplay01/Background.gd" type="Script" id=5]
+[ext_resource path="res://src/ui/gui/GUI.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SegmentShape2D" id=1]
 b = Vector2( 640, 0 )
@@ -22,6 +23,12 @@ b = Vector2( 640, 600 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
+
+[node name="GUI" parent="." instance=ExtResource( 6 )]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -44,7 +51,6 @@ shape = SubResource( 4 )
 [node name="Background" type="ParallaxBackground" parent="."]
 layer = -1
 script = ExtResource( 5 )
-velocity = 25
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
 motion_mirroring = Vector2( 0, 480 )
@@ -54,10 +60,6 @@ position = Vector2( 0, 1.52588e-05 )
 scale = Vector2( 1.83185, 1.2 )
 texture = ExtResource( 4 )
 centered = false
-
-[node name="StartTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
 
 [node name="AsteroidSpawner" parent="." instance=ExtResource( 1 )]
 position = Vector2( 320, -64 )

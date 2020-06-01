@@ -60,22 +60,22 @@ func _set_physics(asteroid: RigidBody2D) -> RigidBody2D:
 	return asteroid
 
 
-func spawn():
+func spawn(controller: Object, handler: String):
 	var asteroid = _set_physics(_choose_random_asteroid())
+	asteroid.connect("destroyed", controller, handler)
 	get_parent().add_child_below_node(self, asteroid)
 
 
-func spawn_wave(spawn_interval: float, count: int):
+func spawn_wave(
+	controller: Object, handler: String, spawn_interval: float, count: int
+) -> void:
 	spawn_timer.wait_time = spawn_interval
 	emit_signal("wave_start")
 
 	spawn_timer.start()
 	for _count in range(0, count):
 		yield(spawn_timer, "timeout")
+		spawn(controller, handler)
 
 	spawn_timer.stop()
 	emit_signal("wave_end")
-
-
-func _on_SpawnTimer_timeout():
-	spawn()
