@@ -1,23 +1,24 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/entities/controllers/asteroid_spawner/AsteroidSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/entities/actors/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/tests/Gameplay01/GameController.gd" type="Script" id=3]
 [ext_resource path="res://src/scenes/tests/Gameplay01/sprites/background.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/tests/Gameplay01/Background.gd" type="Script" id=5]
 
 [sub_resource type="SegmentShape2D" id=1]
-b = Vector2( 800, 0 )
+b = Vector2( 640, 0 )
 
 [sub_resource type="SegmentShape2D" id=2]
-b = Vector2( 0, 800 )
+b = Vector2( 0, 480 )
 
 [sub_resource type="SegmentShape2D" id=3]
 a = Vector2( 800, 0 )
-b = Vector2( 800, 600 )
+b = Vector2( 800, 488 )
 
 [sub_resource type="SegmentShape2D" id=4]
 a = Vector2( 0, 600 )
-b = Vector2( 800, 600 )
+b = Vector2( 640, 600 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -33,30 +34,39 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="RightBoundary" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2( -160, -8 )
 shape = SubResource( 3 )
 
 [node name="LowerBoundary" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2( 0, -120 )
 shape = SubResource( 4 )
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="Background" type="ParallaxBackground" parent="."]
 layer = -1
+script = ExtResource( 5 )
+velocity = 25
 
-[node name="Image" type="Sprite" parent="Background"]
-position = Vector2( 400, 300 )
-scale = Vector2( 2.29226, 1.5 )
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2( 0, 480 )
+
+[node name="Image" type="Sprite" parent="Background/ParallaxLayer"]
+position = Vector2( 0, 1.52588e-05 )
+scale = Vector2( 1.83185, 1.2 )
 texture = ExtResource( 4 )
+centered = false
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [node name="AsteroidSpawner" parent="." instance=ExtResource( 1 )]
-position = Vector2( 410.981, -64 )
-position_end = Vector2( 800, 0 )
+position = Vector2( 320, -64 )
+position_start = Vector2( 0, -64 )
+position_end = Vector2( 640, -64 )
 linear_velocity_start = Vector2( 0, 20 )
 linear_velocity_end = Vector2( 0, 200 )
 wave_count = 20
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 410.981, 472.114 )
+position = Vector2( 320, 384 )
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
