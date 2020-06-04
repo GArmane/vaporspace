@@ -32,7 +32,13 @@ margin_bottom = 45.0
 
 [node name="GameOverUI" parent="CanvasLayer" instance=ExtResource( 7 )]
 
-[node name="StartTimer" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="ReloadTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="StartTimer" type="Timer" parent="Timers"]
 wait_time = 3.0
 one_shot = true
 
@@ -77,4 +83,6 @@ wave_count = 20
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 320, 384 )
-[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="Timers/ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
+[connection signal="timeout" from="Timers/StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
