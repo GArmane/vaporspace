@@ -8,13 +8,19 @@ export var points := 10
 
 
 # Public API
-func destroy() -> void:
-	emit_signal("destroyed", points)
+func destroy(points_to_award) -> void:
+	emit_signal("destroyed", points_to_award)
 	remove()
 
 
-func hit(_hitter: Node) -> void:
-	destroy()
+func hit(hitter: CollisionObject2D) -> void:
+	match hitter.collision_layer:
+		# Player
+		1:
+			destroy(0)
+		# Any
+		_:
+			destroy(points)
 
 
 func remove() -> void:
