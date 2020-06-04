@@ -19,3 +19,8 @@ func hit(_hitter: Node) -> void:
 
 func remove() -> void:
 	queue_free()
+
+
+# Signal handlers
+func _on_VisibilityNotifier2D_screen_exited():
+	remove()

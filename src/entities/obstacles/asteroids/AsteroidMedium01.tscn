@@ -24,3 +24,8 @@ texture = ExtResource( 1 )
 position = Vector2( 1.78814e-07, 3.73587 )
 rotation = 2.0944
 shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0.841764, 0.671475 )
+scale = Vector2( 3.21582, 2.55785 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
