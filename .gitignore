@@ -18,4 +18,7 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 
+# Project builds
+builds/
+
 # End of https://www.gitignore.io/api/code,godot
