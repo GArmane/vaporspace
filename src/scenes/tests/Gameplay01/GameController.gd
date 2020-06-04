@@ -2,7 +2,8 @@ extends Node2D
 
 
 onready var asteroid_spawner: Position2D = $AsteroidSpawner
-onready var gui: CanvasLayer = $GUI
+onready var gui: MarginContainer = $CanvasLayer/GUI
+onready var game_over_ui: Control = $CanvasLayer/GameOverUI
 onready var start_timer: Timer = $StartTimer
 
 
@@ -11,6 +12,7 @@ onready var score := 0
 
 func _ready():
 	start_timer.start()
+	game_over_ui.hide()
 
 
 func _on_StartTimer_timeout():

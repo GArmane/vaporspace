@@ -1,6 +1,9 @@
-extends CanvasLayer
+extends MarginContainer
 
 
+onready var score: HBoxContainer = $Elements/Score
+
+
+# Public API
 func update_score(value: int) -> int:
-	get_node("BaseContainer/Elements/Score/Value").text = str(value)
-	return value
+	return score.update_value(value)
