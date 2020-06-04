@@ -15,7 +15,6 @@ const asteroids = [
 
 onready var container: Node2D = $Container
 onready var rng := RandomNumberGenerator.new()
-onready var start_timer: Timer = $StartTimer
 onready var spawn_timer: Timer = $SpawnTimer
 
 
