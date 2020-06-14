@@ -6,6 +6,7 @@ onready var gui: MarginContainer = $CanvasLayer/GUI
 onready var game_over_ui: Control = $CanvasLayer/GameOverUI
 onready var reload_timer: Timer = $Timers/ReloadTimer
 onready var start_timer: Timer = $Timers/StartTimer
+onready var background_music: AudioStreamPlayer =  $AudioPlayers/BackgroundMusicPlayer
 
 
 onready var score := 0
@@ -16,6 +17,7 @@ func _ready() -> void:
 	# Prepare UI
 	game_over_ui.hide()
 	gui.update_score(score)
+	background_music.play()
 
 	start_timer.start()
 

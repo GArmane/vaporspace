@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/M.O.O.N. - Dust.ogg-c9a04537b94c3280b1787ceb818e5820.oggstr"
+
+[deps]
+
+source_file="res://src/music/M.O.O.N. - Dust.ogg"
+dest_files=[ "res://.import/M.O.O.N. - Dust.ogg-c9a04537b94c3280b1787ceb818e5820.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
