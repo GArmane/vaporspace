@@ -10,7 +10,8 @@
 [ext_resource path="res://src/entities/actors/player/sprites/exhaust_flame_04.png" type="Texture" id=8]
 [ext_resource path="res://src/entities/actors/player/sprites/exhaust_flame_05.png" type="Texture" id=9]
 [ext_resource path="res://src/entities/actors/player/sprites/exhaust_flame_06.png" type="Texture" id=10]
-[ext_resource path="res://src/entities/actors/weapons_system/WeaponsSystem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/entities/controllers/weapons_system/WeaponsSystem.tscn" type="PackedScene" id=11]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
