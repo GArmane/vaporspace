@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/entities/obstacles/asteroids/sprites/asteroid_medium_01.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/obstacles/asteroids/scripts/AsteroidMedium.gd" type="Script" id=2]
+[ext_resource path="res://src/entities/obstacles/asteroids/sfx/explosion2.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 23.6926
@@ -28,4 +29,10 @@ shape = SubResource( 1 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 0.841764, 0.671475 )
 scale = Vector2( 3.21582, 2.55785 )
+
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="DestroySFX" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource( 3 )
+volume_db = -10.0
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

@@ -4,12 +4,19 @@ extends RigidBody2D
 signal destroyed(points)
 
 
+onready var destroy_sfx: AudioStreamPlayer = $AudioPlayers/DestroySFX
+onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
 export var points := 10
 
 
 # Public API
 func destroy(points_to_award) -> void:
 	emit_signal("destroyed", points_to_award)
+	collision_shape.set_deferred("disabled", true)
+	destroy_sfx.play()
+	hide()
+	yield(destroy_sfx, "finished")
 	remove()
 
 
