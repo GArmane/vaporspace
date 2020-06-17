@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://src/entities/controllers/asteroid_spawner/AsteroidSpawner.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/entities/actors/player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/scenes/tests/Gameplay01/GameController.gd" type="Script" id=3]
-[ext_resource path="res://src/scenes/tests/Gameplay01/sprites/background.png" type="Texture" id=4]
-[ext_resource path="res://src/scenes/tests/Gameplay01/Background.gd" type="Script" id=5]
-[ext_resource path="res://src/ui/gui/GUI.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/ui/game_over/GameOverUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/scenes/main/Background.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/main/sprites/background.png" type="Texture" id=2]
+[ext_resource path="res://src/entities/controllers/asteroid_spawner/AsteroidSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/entities/actors/player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ui/gui/GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/ui/game_over/GameOverUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/scenes/main/GameController.gd" type="Script" id=7]
 
 [sub_resource type="SegmentShape2D" id=1]
 b = Vector2( 640, 0 )
@@ -23,14 +23,14 @@ a = Vector2( 0, 600 )
 b = Vector2( 640, 600 )
 
 [node name="Main" type="Node2D"]
-script = ExtResource( 3 )
+script = ExtResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GUI" parent="CanvasLayer" instance=ExtResource( 6 )]
+[node name="GUI" parent="CanvasLayer" instance=ExtResource( 5 )]
 margin_bottom = 45.0
 
-[node name="GameOverUI" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="GameOverUI" parent="CanvasLayer" instance=ExtResource( 6 )]
 
 [node name="Timers" type="Node" parent="."]
 
@@ -44,7 +44,7 @@ one_shot = true
 
 [node name="Background" type="ParallaxBackground" parent="."]
 layer = -1
-script = ExtResource( 5 )
+script = ExtResource( 1 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
 motion_mirroring = Vector2( 0, 480 )
@@ -52,7 +52,7 @@ motion_mirroring = Vector2( 0, 480 )
 [node name="Image" type="Sprite" parent="Background/ParallaxLayer"]
 position = Vector2( 0, 1.52588e-05 )
 scale = Vector2( 1.83185, 1.2 )
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 centered = false
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
@@ -73,7 +73,7 @@ shape = SubResource( 3 )
 position = Vector2( 0, -120 )
 shape = SubResource( 4 )
 
-[node name="AsteroidSpawner" parent="." instance=ExtResource( 1 )]
+[node name="AsteroidSpawner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 320, -64 )
 position_start = Vector2( 0, -64 )
 position_end = Vector2( 640, -64 )
@@ -81,7 +81,7 @@ linear_velocity_start = Vector2( 0, 20 )
 linear_velocity_end = Vector2( 0, 200 )
 wave_count = 20
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 320, 384 )
 [connection signal="timeout" from="Timers/ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_StartTimer_timeout"]
