@@ -4,19 +4,28 @@ extends RigidBody2D
 signal destroyed(points)
 
 
+
 onready var destroy_sfx: AudioStreamPlayer = $AudioPlayers/DestroySFX
 onready var collision_shape: CollisionShape2D = $CollisionShape2D
+onready var sprite: Sprite = $Sprite
 
+export (PackedScene) var explosion
 export var points := 10
 
 
 # Public API
 func destroy(points_to_award) -> void:
-	emit_signal("destroyed", points_to_award)
+	# Hide sprite and disable collision
 	collision_shape.set_deferred("disabled", true)
+	sprite.visible = false
+
+	# Spawn explosion effect and sound
+	add_child(explosion.instance())
 	destroy_sfx.play()
-	hide()
+
+	emit_signal("destroyed", points_to_award)
 	yield(destroy_sfx, "finished")
+	# Cleanup
 	remove()
 
 
