@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Meavy Boy - Compassion.wav-5bfedf305fd15d746e95fcce5ca822f2.sample"
+
+[deps]
+
+source_file="res://src/music/Meavy Boy - Compassion.wav"
+dest_files=[ "res://.import/Meavy Boy - Compassion.wav-5bfedf305fd15d746e95fcce5ca822f2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
