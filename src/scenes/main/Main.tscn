@@ -39,14 +39,20 @@ autoplay = true
 margin_bottom = 45.0
 
 [node name="GameOverUI" parent="CanvasLayer" instance=ExtResource( 6 )]
+visible = false
 
 [node name="Timers" type="Node" parent="."]
+
+[node name="GameTimer" type="Timer" parent="Timers"]
+wait_time = 170.0
+one_shot = true
+autostart = true
 
 [node name="ReloadTimer" type="Timer" parent="Timers"]
 wait_time = 5.0
 one_shot = true
 
-[node name="StartTimer" type="Timer" parent="Timers"]
+[node name="WaveTimer" type="Timer" parent="Timers"]
 wait_time = 3.0
 one_shot = true
 
@@ -91,6 +97,7 @@ wave_count = 20
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 320, 384 )
+[connection signal="timeout" from="Timers/GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="Timers/ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
-[connection signal="timeout" from="Timers/StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="Timers/WaveTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
