@@ -35,10 +35,7 @@ export var angular_velocity_end := 0
 export var wave_count := 10
 
 
-func _ready():
-	rng.randomize()
-
-
+# Private API
 func _choose_random_asteroid() -> RigidBody2D:
 	var index = rng.randi_range(0, len(asteroids) - 1)
 	return asteroids[index].instance()
@@ -48,20 +45,26 @@ func _rand_vector(start: Vector2, end: Vector2) -> Vector2:
 	return Vector2(rand_range(start.x, end.x), rand_range(start.y, end.y))
 
 
-func _set_physics(asteroid: RigidBody2D) -> RigidBody2D:
-	asteroid.position = _rand_vector(position_start, position_end)
-	asteroid.linear_velocity = _rand_vector(
+func _create_asteroid(controller: Object, handler: String) -> RigidBody2D:
+	var asteroid = _choose_random_asteroid()
+
+	# Generate astroid attributes
+	var pos := _rand_vector(position_start, position_end)
+	var lin_velocity := _rand_vector(
 		linear_velocity_start, linear_velocity_end
 	)
-	asteroid.angular_velocity = rand_range(
+	var ang_velocity := rand_range(
 		angular_velocity_start, angular_velocity_end
 	)
-	return asteroid
+
+	return asteroid.initialize(
+		pos, lin_velocity, ang_velocity, controller, handler
+	)
 
 
+# Public API
 func spawn(controller: Object, handler: String):
-	var asteroid = _set_physics(_choose_random_asteroid())
-	asteroid.connect("destroyed", controller, handler)
+	var asteroid = _create_asteroid(controller, handler)
 	get_parent().add_child_below_node(self, asteroid)
 
 
@@ -78,3 +81,8 @@ func spawn_wave(
 
 	spawn_timer.stop()
 	emit_signal("wave_end")
+
+
+# Callbacks
+func _ready():
+	rng.randomize()

@@ -4,7 +4,6 @@ extends RigidBody2D
 signal destroyed(points)
 
 
-
 onready var destroy_sfx: AudioStreamPlayer = $AudioPlayers/DestroySFX
 onready var collision_shape: CollisionShape2D = $CollisionShape2D
 onready var sprite: Sprite = $Sprite
@@ -14,6 +13,24 @@ export var points := 10
 
 
 # Public API
+func initialize(
+	pos: Vector2,
+	lin_velocity: Vector2,
+	ang_velocity: float,
+	controller: Object,
+	handler: String
+) -> RigidBody2D:
+	# Set object attributes
+	position = pos
+	linear_velocity = lin_velocity
+	angular_velocity = ang_velocity
+
+	# Connect self with game controller
+	connect("destroyed", controller, handler)
+
+	return self
+
+
 func destroy(points_to_award) -> void:
 	# Hide sprite and disable collision
 	collision_shape.set_deferred("disabled", true)
