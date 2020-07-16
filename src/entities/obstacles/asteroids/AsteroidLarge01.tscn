@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/entities/obstacles/asteroids/sprites/asteroid_large_01.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/obstacles/asteroids/scripts/AsteroidLarge.gd" type="Script" id=2]
 [ext_resource path="res://src/entities/obstacles/asteroids/sfx/explosion3.wav" type="AudioStream" id=3]
 [ext_resource path="res://src/entities/particles/explosions/Explosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/entities/obstacles/asteroids/ChildSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/entities/obstacles/asteroids/AsteroidMedium01.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 37.7623
@@ -20,6 +22,7 @@ __meta__ = {
 "_edit_group_": true
 }
 explosion = ExtResource( 4 )
+points = 20
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
@@ -37,4 +40,11 @@ scale = Vector2( 3.9, 3.7 )
 [node name="DestroySFX" type="AudioStreamPlayer" parent="AudioPlayers"]
 stream = ExtResource( 3 )
 volume_db = -15.0
+
+[node name="ChildSpawner" parent="." instance=ExtResource( 5 )]
+child_asteroid = ExtResource( 6 )
+childs_to_spawn = 1
+chance_to_spawn_child = 0.05
+lin_velocity_child_lower_bound = Vector2( -100, -100 )
+lin_velocity_child_upper_bound = Vector2( 100, 100 )
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

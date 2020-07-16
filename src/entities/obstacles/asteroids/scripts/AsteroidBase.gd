@@ -16,22 +16,17 @@ export var points := 10
 func initialize(
 	pos: Vector2,
 	lin_velocity: Vector2,
-	ang_velocity: float,
-	controller: Object,
-	handler: String
+	ang_velocity: float
 ) -> RigidBody2D:
 	# Set object attributes
 	position = pos
 	linear_velocity = lin_velocity
 	angular_velocity = ang_velocity
 
-	# Connect self with game controller
-	connect("destroyed", controller, handler)
-
 	return self
 
 
-func destroy(points_to_award) -> void:
+func destroy(points_to_award: int) -> void:
 	# Hide sprite and disable collision
 	collision_shape.set_deferred("disabled", true)
 	sprite.visible = false

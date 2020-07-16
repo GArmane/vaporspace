@@ -45,7 +45,7 @@ func _rand_vector(start: Vector2, end: Vector2) -> Vector2:
 	return Vector2(rand_range(start.x, end.x), rand_range(start.y, end.y))
 
 
-func _create_asteroid(controller: Object, handler: String) -> RigidBody2D:
+func _create_asteroid() -> RigidBody2D:
 	var asteroid = _choose_random_asteroid()
 
 	# Generate astroid attributes
@@ -57,14 +57,13 @@ func _create_asteroid(controller: Object, handler: String) -> RigidBody2D:
 		angular_velocity_start, angular_velocity_end
 	)
 
-	return asteroid.initialize(
-		pos, lin_velocity, ang_velocity, controller, handler
-	)
+	return asteroid.initialize(pos, lin_velocity, ang_velocity)
 
 
 # Public API
 func spawn(controller: Object, handler: String):
-	var asteroid = _create_asteroid(controller, handler)
+	var asteroid = _create_asteroid()
+	asteroid.connect("destroyed", controller, handler)
 	get_parent().add_child_below_node(self, asteroid)
 
 
