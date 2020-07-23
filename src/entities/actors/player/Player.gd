@@ -2,11 +2,14 @@ extends KinematicBody2D
 
 
 signal dead
+signal lives_changed(value)
 
 
 export var speed := 400
+export var lives := 3
 
-onready var animated_sprite: AnimatedSprite = $BodySprite
+onready var animated_sprite: AnimatedSprite = $Canvas/BodySprite
+onready var canvas: CanvasModulate = $Canvas
 onready var weapons_system: Node2D = $WeaponsSystem
 
 
@@ -22,6 +25,21 @@ func _physics_process(delta: float) -> void:
 
 
 # Private API
+func _activate_invulnerability():
+	canvas.modulate.a = 0.4  # Apply alpha
+	collision_mask = 2  # Disable collisions with obstacles
+
+
+func _deactivate_invulnerability():
+	canvas.modulate.a = 1  # Disable alpha 
+	collision_mask = 6  # Active collisions with obstacles
+
+
+func _kill():
+	emit_signal("dead")
+	queue_free()
+
+
 func _process_animation(velocity: Vector2) -> void:
 	if velocity.length() > 0 and velocity.x != 0:
 		animated_sprite.flip_h = velocity.x > 0
@@ -38,7 +56,7 @@ func _process_collision(coll: KinematicCollision2D) -> void:
 		# Obstacles
 		4:
 			collider.hit(self)
-			kill()
+			hit()
 		# Any
 		_:
 			pass
@@ -72,6 +90,13 @@ func _process_velocity() -> Vector2:
 
 
 # Public API
-func kill():
-	emit_signal("dead")
-	queue_free()
+func hit():
+	var lives_lost = 1
+	emit_signal("lives_changed", lives_lost)
+	lives -= lives_lost
+	if lives <= 0:
+		_kill()
+	else:
+		_activate_invulnerability()
+		yield(get_tree().create_timer(3), "timeout")
+		_deactivate_invulnerability()
