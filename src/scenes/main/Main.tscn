@@ -101,3 +101,4 @@ position = Vector2( 320, 384 )
 [connection signal="timeout" from="Timers/ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
 [connection signal="timeout" from="Timers/WaveTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+[connection signal="lifes_changed" from="Player" to="." method="_on_Player_lifes_changed"]

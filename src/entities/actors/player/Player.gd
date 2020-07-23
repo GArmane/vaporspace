@@ -2,11 +2,11 @@ extends KinematicBody2D
 
 
 signal dead
-signal lives_changed(value)
+signal lifes_changed(value)
 
 
 export var speed := 400
-export var lives := 3
+export var lifes := 3
 
 onready var animated_sprite: AnimatedSprite = $Canvas/BodySprite
 onready var canvas: CanvasModulate = $Canvas
@@ -91,10 +91,9 @@ func _process_velocity() -> Vector2:
 
 # Public API
 func hit():
-	var lives_lost = 1
-	emit_signal("lives_changed", lives_lost)
-	lives -= lives_lost
-	if lives <= 0:
+	lifes -= 1
+	emit_signal("lifes_changed", lifes)
+	if lifes <= 0:
 		_kill()
 	else:
 		_activate_invulnerability()
