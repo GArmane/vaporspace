@@ -44,7 +44,7 @@ margin_right = 608.0
 margin_bottom = 29.0
 
 [node name="Lifes" type="HBoxContainer" parent="Elements/FirstRow"]
-margin_right = 183.0
+margin_right = 137.0
 margin_bottom = 29.0
 script = ExtResource( 3 )
 __meta__ = {
@@ -69,36 +69,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Separator" type="Label" parent="Elements/FirstRow/Lifes"]
-margin_left = 141.0
-margin_right = 160.0
-margin_bottom = 29.0
-custom_fonts/font = SubResource( 4 )
-text = "/"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MaxValue" type="Label" parent="Elements/FirstRow/Lifes"]
-margin_left = 164.0
-margin_right = 183.0
-margin_bottom = 29.0
-custom_fonts/font = SubResource( 4 )
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Score" type="HBoxContainer" parent="Elements/FirstRow"]
-margin_left = 195.0
+margin_left = 149.0
 margin_right = 608.0
 margin_bottom = 29.0
 alignment = 2
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Elements/FirstRow/Score"]
-margin_left = 276.0
-margin_right = 390.0
+margin_left = 322.0
+margin_right = 436.0
 margin_bottom = 29.0
 custom_fonts/font = SubResource( 2 )
 text = "score:"
@@ -106,8 +86,8 @@ align = 2
 uppercase = true
 
 [node name="Value" type="Label" parent="Elements/FirstRow/Score"]
-margin_left = 394.0
-margin_right = 413.0
+margin_left = 440.0
+margin_right = 459.0
 margin_bottom = 29.0
 custom_fonts/font = SubResource( 4 )
 text = "0"

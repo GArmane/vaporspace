@@ -34,7 +34,7 @@ func _end_game(restart_time: int) -> void:
 func _ready() -> void:
 	# Prepare UI
 	gui.update_score(score)
-	gui.update_life_values(player.lifes, player.lifes)
+	gui.update_life_value(player.lifes)
 	# Prepare timers
 	game_timer.wait_time = game_time
 	wave_timer.wait_time = time_between_waves
