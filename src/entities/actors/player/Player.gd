@@ -25,16 +25,6 @@ func _physics_process(delta: float) -> void:
 
 
 # Private API
-func _activate_invulnerability():
-	canvas.modulate.a = 0.4  # Apply alpha
-	collision_mask = 2  # Disable collisions with obstacles
-
-
-func _deactivate_invulnerability():
-	canvas.modulate.a = 1  # Disable alpha 
-	collision_mask = 6  # Active collisions with obstacles
-
-
 func _kill():
 	emit_signal("dead")
 	queue_free()
@@ -55,6 +45,10 @@ func _process_collision(coll: KinematicCollision2D) -> void:
 	match collider.collision_layer:
 		# Obstacles
 		4:
+			collider.hit(self)
+			hit()
+		# Enemies
+		8:
 			collider.hit(self)
 			hit()
 		# Any
@@ -89,6 +83,16 @@ func _process_velocity() -> Vector2:
 	return velocity.normalized() * speed
 
 
+func _toggle_invulnerability() -> void:
+	var initial_collision_mask := collision_mask
+	var initial_modulate_a = canvas.modulate.a
+	canvas.modulate.a = 0.4  # Apply alpha
+	collision_mask = 2  # Disable collisions with obstacles
+	yield(get_tree().create_timer(3), "timeout")
+	canvas.modulate.a = initial_modulate_a  # Disable alpha 
+	collision_mask = initial_collision_mask  # Active collisions with obstacles
+
+
 # Public API
 func hit():
 	lifes -= 1
@@ -96,6 +100,4 @@ func hit():
 	if lifes <= 0:
 		_kill()
 	else:
-		_activate_invulnerability()
-		yield(get_tree().create_timer(3), "timeout")
-		_deactivate_invulnerability()
+		_toggle_invulnerability()
