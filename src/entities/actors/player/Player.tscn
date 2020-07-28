@@ -10,7 +10,8 @@
 [ext_resource path="res://src/entities/actors/player/sprites/exhaust_flame_04.png" type="Texture" id=8]
 [ext_resource path="res://src/entities/actors/player/sprites/exhaust_flame_05.png" type="Texture" id=9]
 [ext_resource path="res://src/entities/actors/player/sprites/exhaust_flame_06.png" type="Texture" id=10]
-[ext_resource path="res://src/entities/controllers/weapons_system/WeaponsSystem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/entities/components/weapons_system/WeaponsSystem.tscn" type="PackedScene" id=11]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -48,14 +49,12 @@ animation = "idle"
 position = Vector2( -3.6494, 24.3871 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
-frame = 3
 playing = true
 
 [node name="RightExhaustSprite" type="AnimatedSprite" parent="Canvas"]
 position = Vector2( 2.55506, 24.705 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
-frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

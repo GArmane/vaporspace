@@ -2,12 +2,13 @@
 
 [ext_resource path="res://src/scenes/main/Background.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/main/sprites/background.png" type="Texture" id=2]
-[ext_resource path="res://src/entities/controllers/asteroid_spawner/AsteroidSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/entities/components/asteroid_spawner/AsteroidSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/entities/actors/player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ui/gui/GUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/ui/game_over/GameOverUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/scenes/main/GameController.gd" type="Script" id=7]
 [ext_resource path="res://src/music/Meavy Boy - Compassion.wav" type="AudioStream" id=8]
+
 
 [sub_resource type="SegmentShape2D" id=1]
 b = Vector2( 640, 0 )

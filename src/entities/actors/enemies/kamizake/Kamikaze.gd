@@ -11,7 +11,7 @@ export var points := 20
 
 # Callbacks
 func _physics_process(delta: float) -> void:
-	var _coll = move_and_collide(velocity.normalized() * delta, false)
+	var _coll = move_and_collide(velocity.normalized() * speed * delta, false)
 
 
 # Public API
