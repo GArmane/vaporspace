@@ -34,6 +34,7 @@ window/stretch/aspect="keep"
 2d_physics/layer_1="player"
 2d_physics/layer_2="boundaries"
 2d_physics/layer_3="obstacles"
+2d_physics/layer_4="enemies"
 
 [rendering]
 
