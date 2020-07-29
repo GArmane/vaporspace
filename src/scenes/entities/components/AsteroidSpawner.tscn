@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/scripts/AsteroidSpawner.gd" type="Script" id=1]
+
+
+[node name="AsteroidSpawner" type="Position2D"]
+script = ExtResource( 1 )
+linear_velocity_start = Vector2( 0, 10 )
+linear_velocity_end = Vector2( 0, 100 )
+angular_velocity_start = -5
+angular_velocity_end = 5
+
+[node name="Container" type="Node2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]

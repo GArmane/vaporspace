@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/scripts/Explosion.gd" type="Script" id=1]
+[ext_resource path="res://src/scripts/AsteroidSmall.gd" type="Script" id=2]
+[ext_resource path="res://src/sprites/asteroid_small_01.png" type="Texture" id=3]
+[ext_resource path="res://src/sfx/explosion1.wav" type="AudioStream" id=4]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0, 0.488889, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0.944336, 0.641457, 0.0479546, 1, 0.905273, 0.141449, 0.141449, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 256
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 4.0
+scale_random = 1.0
+color_ramp = SubResource( 2 )
+
+[sub_resource type="PackedScene" id=4]
+_bundled = {
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray( "Explosion", "Particles2D", "emitting", "amount", "lifetime", "one_shot", "explosiveness", "process_material", "script", "__meta__" ),
+"node_count": 1,
+"node_paths": [  ],
+"nodes": PoolIntArray( -1, -1, 1, 0, -1, 8, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 0 ),
+"variants": [ false, 25, 0.3, true, 0.8, SubResource( 3 ), ExtResource( 1 ), {
+"_edit_group_": true
+} ],
+"version": 2
+}
+
+[sub_resource type="CircleShape2D" id=5]
+
+[node name="Asteroid" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 4
+gravity_scale = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 2 )
+explosion = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2, 3 )
+shape = SubResource( 5 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -2, 3 )
+
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="DestroySFX" type="AudioStreamPlayer" parent="AudioPlayers"]
+stream = ExtResource( 4 )
+volume_db = -5.0
+[connection signal="body_entered" from="." to="." method="_on_Asteroid_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
