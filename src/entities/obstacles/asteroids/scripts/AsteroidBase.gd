@@ -22,7 +22,6 @@ func initialize(
 	position = pos
 	linear_velocity = lin_velocity
 	angular_velocity = ang_velocity
-
 	return self
 
 

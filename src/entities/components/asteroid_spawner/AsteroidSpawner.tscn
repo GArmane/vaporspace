@@ -2,7 +2,6 @@
 
 [ext_resource path="res://src/entities/components/asteroid_spawner/AsteroidSpawner.gd" type="Script" id=1]
 
-
 [node name="AsteroidSpawner" type="Position2D"]
 script = ExtResource( 1 )
 linear_velocity_start = Vector2( 0, 10 )
