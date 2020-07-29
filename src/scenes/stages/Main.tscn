@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/scripts/Background.gd" type="Script" id=1]
 [ext_resource path="res://src/sprites/background.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/music/Meavy Boy - Compassion.wav" type="AudioStream" id=8]
 [ext_resource path="res://src/scenes/entities/components/EnemySpawner.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/scenes/entities/actors/enemies/Kamikaze.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/textures/crt_frame.png" type="Texture" id=11]
 
 [sub_resource type="SegmentShape2D" id=1]
 b = Vector2( 640, 0 )
@@ -42,6 +43,15 @@ margin_bottom = 45.0
 
 [node name="GameOverUI" parent="CanvasLayer" instance=ExtResource( 6 )]
 visible = false
+
+[node name="CRTFrame" type="TextureRect" parent="CanvasLayer"]
+margin_right = 641.0
+margin_bottom = 480.0
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Timers" type="Node" parent="."]
 
