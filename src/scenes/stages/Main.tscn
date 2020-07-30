@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/scripts/Background.gd" type="Script" id=1]
 [ext_resource path="res://src/sprites/background.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://src/scenes/entities/components/EnemySpawner.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/scenes/entities/actors/enemies/Kamikaze.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/textures/crt_frame.png" type="Texture" id=11]
+[ext_resource path="res://src/textures/white.png" type="Texture" id=12]
+[ext_resource path="res://src/materials/crt_screen.tres" type="Material" id=13]
 
 [sub_resource type="SegmentShape2D" id=1]
 b = Vector2( 640, 0 )
@@ -48,6 +50,17 @@ visible = false
 margin_right = 641.0
 margin_bottom = 480.0
 texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CRTScreen" type="TextureRect" parent="CanvasLayer"]
+material = ExtResource( 13 )
+margin_top = -1.0
+margin_right = 640.0
+margin_bottom = 479.0
+texture = ExtResource( 12 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
